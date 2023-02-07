@@ -1,4 +1,5 @@
 .mars-scene {
+    display: contents;
     width: 40%;
     height: 40%;
   }
@@ -10,3 +11,9 @@
     }
   }
   
+  .mars-scene img {
+    width: 250px;
+    height: 163px;
+    float: right;
+
+  }

@@ -1,0 +1,27 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-image: url("../../assets/images/footer-galaxy.webp");
+    color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-universe {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .footer-mars {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .footer-metaverse {
+    flex: 1;
+    text-align: right;
+  }
+  

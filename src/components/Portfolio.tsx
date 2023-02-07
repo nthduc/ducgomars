@@ -1,15 +1,18 @@
 import { MarsScene } from './MarsScene';
 import { MarsInfo } from './MarsInfo';
-import Navbar from './Navbar/Navbar';
+import { Navbar } from './Navbar';
+import { Footer } from './Footer';
 
 const Portfolio = () => {
     return (
         <div>
             <Navbar />
-            <div>
+            <main>
                 <MarsScene />
                 <MarsInfo />
-            </div>
+            </main>
+
+            <Footer />
         </div>
     );
 };
