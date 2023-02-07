@@ -1,16 +1,17 @@
-
-import { MarsScene } from "./MarsScene";
-import { MarsInfo } from "./MarsInfo";
-import Navbar from "./Navbar/Navbar";
+import { MarsScene } from './MarsScene';
+import { MarsInfo } from './MarsInfo';
+import Navbar from './Navbar/Navbar';
 
 const Portfolio = () => {
-  return (
-    <div>
-      <Navbar />
-      <MarsScene />
-      <MarsInfo />
-    </div>
-  );
+    return (
+        <div>
+            <Navbar />
+            <div>
+                <MarsScene />
+                <MarsInfo />
+            </div>
+        </div>
+    );
 };
 
 export default Portfolio;
