@@ -1,0 +1,61 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #1b1e2d;
+    color: white;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  /* Cosmic logo */
+  .navbar__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Navigation links */
+  .navbar__links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar__links li {
+    margin: 0 10px;
+  }
+
+  .navbar__links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Galaxy animation */
+  .navbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+    animation: animation-name 30s linear infinite;
+    z-index: -1;
+  }
+
+  @keyframes animation-name {
+    from {
+      transform: translate3d(-5%, 0, 0);
+    }
+    to {
+      transform: translate3d(105%, 0, 0);
+    }
+  }

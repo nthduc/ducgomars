@@ -1,0 +1,1 @@
+export { default as MarsScene } from "./MarsScene";
