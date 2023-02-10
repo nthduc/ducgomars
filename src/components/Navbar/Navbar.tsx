@@ -4,7 +4,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <a className="navbar__logo" href="#">
-        Cosmic Navbar
+        Connect
       </a>
       <ul className="navbar__links">
         <li>

@@ -1,1 +1,1 @@
-export {default as MarsInfo} from "./MarsInfo";
+export { default as MarsInfo } from './MarsInfo';
