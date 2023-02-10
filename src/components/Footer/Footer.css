@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-image: url("../../assets/images/footer-galaxy.webp");
+    background-image: url("@/assets/images/footer-galaxy.webp");
     color: #fff;
     position: fixed;
     left: 0;

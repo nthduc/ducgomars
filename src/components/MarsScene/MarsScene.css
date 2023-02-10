@@ -17,3 +17,25 @@
     float: right;
 
   }
+
+  .loading-effect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    }
+    
+    .loading-effect span {
+    font-size: 2rem;
+    color: #333;
+    animation: loading 2s infinite linear;
+    }
+    
+    @keyframes loading {
+    0% {
+    transform: translateX(-50%);
+    }
+    100% {
+    transform: translateX(50%);
+    }
+    }

@@ -1,13 +1,14 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import MarsDiffuseMap from '../../assets/images/diffuse.jpg';
-import MarsBumpMap from '../../assets/images/bump.jpg';
-import Mars2K from '../../assets/images/2k_mars.jpg';
-import HeroDrone from "../../assets/images/hero-drone.webp";
+import MarsBumpMap from '@/assets/images/bump.jpg';
+import Mars2K from '@/assets/images/2k_mars.jpg';
+import HeroDrone from "@/assets/images/hero-drone.webp";
 import "./MarsScene.css"
 
 const MarsScene = () => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const scene = new THREE.Scene();
@@ -25,28 +26,39 @@ const MarsScene = () => {
         camera.position.z = 3;
         light.position.set(5, 3, 5);
 
-        material.map = new THREE.TextureLoader().load(Mars2K);
-        material.bumpMap = new THREE.TextureLoader().load(MarsBumpMap);
-        material.bumpScale = 0.015;
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load(Mars2K, texture => {
+            material.map = texture;
+            textureLoader.load(MarsBumpMap, bumpTexture => {
+                material.bumpMap = bumpTexture;
+                material.bumpScale = 0.015;
 
-        scene.add(mesh);
-        scene.add(light);
+                scene.add(mesh);
+                scene.add(light);
 
-        const animate = () => {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
+                const animate = () => {
+                    requestAnimationFrame(animate);
+                    renderer.render(scene, camera);
 
-            mesh.rotation.y -= 0.001;
-        };
+                    mesh.rotation.y -= 0.001;
+                };
 
-        if (containerRef.current) {
-            containerRef.current.appendChild(renderer.domElement);
-            animate();
-        }
+                setLoading(false);
+                if (containerRef.current) {
+                    containerRef.current.appendChild(renderer.domElement);
+                    animate();
+                }
+            }, undefined, error => {
+                console.error(error);
+            });
+        }, undefined, error => {
+            console.error(error);
+        });
     }, []);
 
     return (
     <div ref={containerRef} className="mars-scene" >
+      {loading ? <div className="loading">Loading...</div> : null}
       <img src ={HeroDrone}  alt="Hero Drone"/>
     </div>
     );
