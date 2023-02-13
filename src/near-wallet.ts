@@ -1,4 +1,4 @@
-/* A helper file that simplifies using the wallet selector */
+// A helper file that simplifies using the wallet selector
 
 // near api js
 import { providers } from 'near-api-js';
@@ -20,23 +20,27 @@ import { setupOptoWallet } from "@near-wallet-selector/opto-wallet";
 
 
 // wallet selector options
-import { ContractState, Network, NetworkId, setupWalletSelector, WalletType } from '@near-wallet-selector/core';
+import { Network, NetworkId, setupWalletSelector } from '@near-wallet-selector/core';
 import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
+import { QueryResponseKind } from 'near-api-js/lib/providers/provider';
 
+// interface QueryResponse extends QueryResponseKind{
+//   result: any;
+// }
 
 const THIRTY_TGAS = '30000000000000';
 const NO_DEPOSIT = '0';
 
 // Wallet that simplifies using the wallet selector
-export class Wallet{
-  walletSelector: any;
-  wallet: any;
-  network: NetworkId | Network ;
-  createAccessKeyFor: any;
-    accountId?: any;
+export class Wallet {
+  walletSelector!: any;
+  wallet!: any;
+  network!: string | Network | NetworkId | any;
+  createAccessKeyFor!: any;
+  accountId?: any;
 
-  constructor({ createAccessKeyFor = undefined, network = 'testnet' }) {
+  constructor({ createAccessKeyFor = undefined, network = 'testnet' }: { createAccessKeyFor?: any, network?: string }) {
     // Login to a wallet passing a contractId will create a local
     // key, so the user skips signing non-payable transactions.
     // Omitting the accountId will result in the user being
@@ -46,7 +50,7 @@ export class Wallet{
   }
 
   // To be called when the website loads
-  async startUp() {
+  async startUp(): Promise<boolean> {
     this.walletSelector = await setupWalletSelector({
       network: this.network,
       modules: [
@@ -73,6 +77,7 @@ export class Wallet{
       this.accountId = this.walletSelector.store.getState().accounts[0].accountId;
     }
 
+
     return isSignedIn;
   }
 
@@ -90,24 +95,23 @@ export class Wallet{
     window.location.replace(window.location.origin + window.location.pathname);
   }
 
-  // Make a read-only call to retrieve information from the network
-  async viewMethod({ contractId, method, args = {} }) {
+  async viewMethod({ contractId, method, args = {} }: { contractId: string; method: string; args?: object; }): Promise<any> {
     const { network } = this.walletSelector.options;
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
-
-    let res = await provider.query({
+  
+    let res: any  = await provider.query({
       request_type: 'call_function',
       account_id: contractId,
       method_name: method,
       args_base64: Buffer.from(JSON.stringify(args)).toString('base64'),
       finality: 'optimistic',
     });
+
     return JSON.parse(Buffer.from(res.result).toString());
   }
-
-  // Call a method that changes the contract's state
-  async callMethod({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = NO_DEPOSIT }) {
-    // Sign a transaction with the "FunctionCall" action
+  
+  async callMethod({ contractId, method, args = {}, gas = Number(THIRTY_TGAS), deposit = Number(NO_DEPOSIT) }: 
+    { contractId: string; method: string; args?: object; gas?: number; deposit?: number; }): Promise<any> {
     return await this.wallet.signAndSendTransaction({
       signerId: this.accountId,
       receiverId: contractId,
@@ -126,7 +130,7 @@ export class Wallet{
   }
 
   // Get transaction result from the network
-  async getTransactionResult(txhash: string) {
+  async getTransactionResult(txhash: any) {
     const { network } = this.walletSelector.options;
     const provider = new providers.JsonRpcProvider({ url: network.nodeUrl });
 

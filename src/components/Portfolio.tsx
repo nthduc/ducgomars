@@ -7,6 +7,7 @@ const Portfolio = () => {
     return (
         <div>
             <Navbar />
+
             <main>
                 <MarsScene />
                 <MarsInfo />

@@ -1,14 +1,24 @@
+// @ts-ignore
 import { Contract } from "@/near-interface";
+// @ts-ignore
 import { Wallet } from "@/near-wallet";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
 
 export const Web3Context = createContext(null);
 
-const CONTRACT_ID = import.meta.env.CONTRACT_ID | "dev-1672541461312-41998318820713";
+const CONTRACT_ID = import.meta.env.CONTRACT_ID;
 
-function Web3Provider({ children }) {
+interface PropsWeb3Provider extends PropsWithChildren<unknown> {};
 
-    const [web3, setWeb3] = useState({
+interface Web3State {
+    wallet: any;
+    contract: any ;
+    isSignedIn: any;
+}
+
+function Web3Provider({ children }: PropsWeb3Provider) {
+
+    const [web3, setWeb3] = useState<Web3State | any>({
         wallet: null,
         contract: null,
         isSignedIn: null,
