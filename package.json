@@ -9,13 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/fiber": "^8.11.0",
-    "pixi.js": "^7.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "three": "^0.149.0",
-    "near-api-js": "^0.44.2",
-    "next-themes": "^0.2.1",
     "@near-wallet-selector/coin98-wallet": "^7.5.0",
     "@near-wallet-selector/core": "^7.0.0",
     "@near-wallet-selector/here-wallet": "^7.5.0",
@@ -31,7 +24,16 @@
     "@near-wallet-selector/opto-wallet": "^7.5.0",
     "@near-wallet-selector/sender": "^7.5.0",
     "@near-wallet-selector/wallet-connect": "^7.5.0",
-    "@near-wallet-selector/welldone-wallet": "^7.5.0"
+    "@near-wallet-selector/welldone-wallet": "^7.5.0",
+    "@react-three/fiber": "^8.11.0",
+    "encoding": "^0.1.13",
+    "near-api-js": "^0.44.2",
+    "next-themes": "^0.2.1",
+    "pixi.js": "^7.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.1",
+    "three": "^0.149.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

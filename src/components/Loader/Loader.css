@@ -1,0 +1,18 @@
+
+.loader {
+    display: inline;
+    width: 2.5rem/* 40px */;
+    height: 2.5rem/* 40px */;
+    margin-right: 0.5rem/* 8px */;
+    --tw-text-opacity: 1;
+    color: rgb(229 231 235 / var(--tw-text-opacity));
+    fill: #6469ff;
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

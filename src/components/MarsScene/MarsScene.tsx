@@ -5,10 +5,11 @@ import MarsBumpMap from '@/assets/images/bump.jpg';
 import Mars2K from '@/assets/images/2k_mars.jpg';
 import HeroDrone from "@/assets/images/hero-drone.webp";
 import "./MarsScene.css"
+import { Loader } from '../Loader';
 
 const MarsScene = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const scene = new THREE.Scene();
@@ -58,7 +59,8 @@ const MarsScene = () => {
 
     return (
     <div ref={containerRef} className="mars-scene" >
-      {loading ? <div className="loading">Loading...</div> : null}
+        {loading ? <Loader /> : null}
+      
       <img src ={HeroDrone}  alt="Hero Drone"/>
     </div>
     );

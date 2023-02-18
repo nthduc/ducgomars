@@ -18,6 +18,19 @@
 
   }
 
+  .loader {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem/* 8px */;
+  }
+
   .loading-effect {
     display: flex;
     align-items: center;

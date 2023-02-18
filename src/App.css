@@ -3,8 +3,24 @@
   height: 100%;
   width: 100%;
   }
+
+  .container {
+    padding-left: 1rem/* 16px */;
+    padding-right: 1rem/* 16px */;
+    padding-top: 2rem/* 32px */;
+    padding-bottom: 2rem/* 32px */;
+    width: 100%;
+    min-height: calc(100vh - 73px);
+    
+  }
   
   .card {
   height: 100%;
   width: 100%;
   }
+
+  @media (min-width: 640px) {
+    .sm\:p-8 {
+        padding: 2rem/* 32px */;
+    }
+}

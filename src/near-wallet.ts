@@ -36,7 +36,7 @@ const NO_DEPOSIT = '0';
 export class Wallet {
   walletSelector!: any;
   wallet!: any;
-  network!: string | Network | NetworkId | any;
+  network!: any;
   createAccessKeyFor!: any;
   accountId?: any;
 
@@ -107,7 +107,7 @@ export class Wallet {
       finality: 'optimistic',
     });
 
-    return JSON.parse(Buffer.from(res.result).toString());
+    return JSON.parse(Buffer.from((res as any).result).toString());
   }
   
   async callMethod({ contractId, method, args = {}, gas = Number(THIRTY_TGAS), deposit = Number(NO_DEPOSIT) }: 

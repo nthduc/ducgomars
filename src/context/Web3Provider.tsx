@@ -12,7 +12,7 @@ interface PropsWeb3Provider extends PropsWithChildren<unknown> {};
 
 interface Web3State {
     wallet: any;
-    contract: any ;
+    contract: any;
     isSignedIn: any;
 }
 
