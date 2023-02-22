@@ -1,4 +1,3 @@
-
 import './App.css';
 import Portfolio from '@/components/Portfolio';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
@@ -13,13 +12,14 @@ function App() {
         <BrowserRouter>
             <Navbar />
 
-            <main className="container">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/create-post" element={<CreatePost />} />
-                </Routes>
-            </main>
-
+            <div className="h-screen flex flex-col">
+                <div className="overflow-y-auto">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/create-post" element={<CreatePost />} />
+                    </Routes>
+                </div>
+            </div>
             <Footer />
         </BrowserRouter>
     );
