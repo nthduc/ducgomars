@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@near-wallet-selector/coin98-wallet": "^7.5.0",
     "@near-wallet-selector/core": "^7.0.0",
     "@near-wallet-selector/here-wallet": "^7.5.0",
@@ -33,6 +34,7 @@
     "pixi.js": "^7.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-router-dom": "^6.8.1",
     "three": "^0.149.0"
   },
